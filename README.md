@@ -1,3 +1,4 @@
+```bash
 # Manually Create a VM
 ## Step by step in RHEL/Centos/Fedora
 
@@ -29,4 +30,4 @@ virt-install --ram 16384 --vcpus 4 --os-variant rhel7   --disk path=$VM.qcow2,de
 
 virsh define /tmp/$VM.xml
 virsh start $VM
-
+```
