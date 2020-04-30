@@ -1,5 +1,6 @@
-```bash
+
 # Manually Create a VM
+```bash
 ## Step by step in RHEL/Centos/Fedora
 
 ### install the required tools
