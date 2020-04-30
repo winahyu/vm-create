@@ -87,7 +87,7 @@ sudo yum -y install python-tripleoclient
 ```bash
 cat > undercloud.conf <<EOF
 [DEFAULT]
-undercloud_hostname = jl-undercloud.corp.wan
+undercloud_hostname = undercloud.corp.wan
 local_ip = 10.5.136.21/24
 undercloud_public_host = 10.5.136.22
 undercloud_admin_host = 10.5.136.23
