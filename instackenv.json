@@ -1,0 +1,18 @@
+{
+  "nodes": [
+    {
+            "name": "controller01",
+            "pm_type": "pxe_ilo",
+            "pm_user": "user",
+            "pm_password": "passwd",
+            "pm_addr": "10.5.142.203"
+    },
+    {
+            "name": "compute01",
+            "pm_type": "pxe_ilo",
+            "pm_user": "user",
+            "pm_password": "passwd",
+            "pm_addr": "10.5.142.204"
+    }
+  ]
+}
