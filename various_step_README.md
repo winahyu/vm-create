@@ -14,4 +14,13 @@ openstack baremetal node set --property capabilities='profile:computeovsdpdk,cpu
 
 ### review the node profiles
 openstack overcloud profiles list
+
+
+## Overcloud 
+### set flavor to support hugepages
+openstack flavor set <FLAVOR> --property hw:mem_page_size=1048576
+
+### create network segment
+openstack network create --provider-network-type vlan --provider-physical-network datacentre1  --provider-segment 30 net30
+openstack subnet create subnet30 --network net30  --subnet-range 192.168.30.1/24 --ip-version 4
 ```
