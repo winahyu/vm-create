@@ -136,15 +136,17 @@ openstack overcloud image upload --image-path ~/images
 ### Registry using rhn
 ```bash
 REGISTRY=registry.access.redhat.com
+LOCAL_REGISTRY=10.5.130.21:8787
 openstack overcloud container image tag discover --image $REGISTRY/rhosp13/openstack-base --tag-from-label {version}-{release}
-sudo openstack overcloud container image prepare --namespace=$REGISTRY/rhosp13 --push-destination=10.5.130.21:8787  --tag=13.0 --tag-from-label {version}-{release} -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-sriov.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker-ha.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-ovs-dpdk.yaml --output-env-file overcloud_images.yaml --output-images-file local_registry_images.yaml
+sudo openstack overcloud container image prepare --namespace=$REGISTRY/rhosp13 --push-destination=$LOCAL_REGISTRY  --tag=13.0 --tag-from-label {version}-{release} -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-sriov.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker-ha.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-ovs-dpdk.yaml --output-env-file overcloud_images.yaml --output-images-file local_registry_images.yaml
 sudo openstack overcloud container image upload --config-file local_registry_images.yaml --verbose
 ```
 ### Registry using Satellite
 ```bash
 REGISTRY=local_satellite:5000
+LOCAL_REGISTRY=10.5.130.21:8787
 openstack overcloud container image tag discover --image $REGISTRY/default_organization-rhosp13-rhosp13_openstack-base --tag-from-label {version}-{release}
-openstack overcloud container image prepare --namespace=$REGISTRY --push-destination=10.5.130.21:8787  --prefix=default_organization-rhosp13-rhosp13_openstack- --tag-from-label {version}-{release}  -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-sriov.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker-ha.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-ovs-dpdk.yaml --output-env-file overcloud_images.yaml --output-images-file local_registry_images.yaml
+openstack overcloud container image prepare --namespace=$REGISTRY --push-destination=$LOCAL_REGISTRY  --prefix=default_organization-rhosp13-rhosp13_openstack- --tag-from-label {version}-{release}  -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-sriov.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker-ha.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-ovs-dpdk.yaml --output-env-file overcloud_images.yaml --output-images-file local_registry_images.yaml
 ```
 ### Upload the container to local registry
 ```bash
