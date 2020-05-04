@@ -151,5 +151,8 @@ openstack overcloud container image prepare --namespace=$REGISTRY --push-destina
 ### Upload the container to local registry
 ```bash
 sudo openstack overcloud container image upload --config-file local_registry_images.yaml --verbose
+
+### verify the local registry
+curl -s -H "Accept: application/json" http://$LOCAL_REGISTRY/v2/_catalog | jq .
 ```
 
