@@ -46,8 +46,8 @@ source ~/stackrc
 openstack overcloud update run --nodes Controller
 
 
-#Updating all Compute nodes
-openstack overcloud update run --nodes Compute
+#Updating all ComputeOvsDpdk nodes
+openstack overcloud update run --nodes ComputeOvsDpdk
 
 #finalizing.
 openstack overcloud update converge \
