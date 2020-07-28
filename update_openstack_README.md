@@ -36,14 +36,15 @@ curl -s -H "Accept: application/json" http://$LOCAL_REGISTRY/v2/_catalog | jq .
 ### Updating all the nodes
 ```bash
 source ~/stackrc
+
+#Updating all Controller nodes
 openstack overcloud update run --nodes Controller
 
 
-Updating all Compute nodes
-
+#Updating all Compute nodes
 openstack overcloud update run --nodes Compute
 
-finalizing.
+#finalizing.
 openstack overcloud update converge \
     --templates \
     -e /home/stack/templates/overcloud_images.yaml \
