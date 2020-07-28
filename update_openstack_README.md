@@ -20,9 +20,11 @@ REGISTRY=registry.access.redhat.com
 LOCAL_REGISTRY=10.5.130.21:8787
 openstack overcloud container image tag discover --image $REGISTRY/rhosp13/openstack-base --tag-from-label {version}-{release}
 sudo openstack overcloud container image prepare --namespace=$REGISTRY/rhosp13 --push-destination=$LOCAL_REGISTRY  --tag=13.0 --tag-from-label {version}-{release} -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-sriov.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/docker-ha.yaml -e /usr/share/openstack-tripleo-heat-templates/environments/services/neutron-ovs-dpdk.yaml --output-env-file overcloud_images.yaml --output-images-file local_registry_images.yaml
+
+edit local_registry_images.yaml if only some containers that need to be updated and use previous overcloud_images.yaml in the deployment with the modification of the version number.
+
 sudo openstack overcloud container image upload --config-file local_registry_images.yaml --verbose
 
-edit local_registry_images.yaml if only some containers that need to be updated
 ```
 
 ### Running the overcloud registry update preparation
