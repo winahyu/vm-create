@@ -13,7 +13,7 @@ openstack undercloud upgrade
 sudo reboot
 ```
 
-### Registry using rhn
+### Using rhn registry to get the latest container images
 ```bash
 REGISTRY=registry.access.redhat.com
 LOCAL_REGISTRY=10.5.130.21:8787
@@ -32,6 +32,10 @@ sudo openstack overcloud container image upload --config-file local_registry_ima
 
 ### verify the local registry
 curl -s -H "Accept: application/json" http://$LOCAL_REGISTRY/v2/_catalog | jq .
+
+### verify one of the container versin
+curl http://$LOCAL_REGISTRY/v2/rhosp13/openstack-nova-libvirt/tags/list | jq .tags
+
 ```
 
 ### Updating all the nodes
