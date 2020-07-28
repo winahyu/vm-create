@@ -1,6 +1,6 @@
 ### Compared the local registry with redhat registry for the version differences.
 ```bash
-LOCAL_REGISTRY=10.5.130.21:8787
+LOCAL_REGISTRY=10.5.144.21:8787
 
 curl http://$LOCAL_REGISTRY/v2/rhosp13/openstack-nova-libvirt/tags/list | jq .tags
 curl https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/multiarch/openstack/13/containers/rhosp13/openstack-nova-libvirt/tags/list | jq .tags
