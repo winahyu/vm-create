@@ -38,6 +38,23 @@ curl http://$LOCAL_REGISTRY/v2/rhosp13/openstack-nova-libvirt/tags/list | jq .ta
 
 ```
 
+### Running the overcloud update preparation
+```bash
+$ openstack overcloud update prepare \
+--templates \
+-e /usr/share/openstack-tripleo-heat-templates/environments/services-docker/neutron-ovs-dpdk.yaml \
+-e /usr/share/openstack-tripleo-heat-templates/environments/disable-telemetry.yaml \
+-r /home/stack/templates/roles_data.yaml \
+-e /home/stack/templates/environments/network-isolation.yaml \
+-e /home/stack/templates/environments/node-info.yaml \
+-e /home/stack/templates/environments/overcloud_images.yaml \
+-e /home/stack/templates/environments/network-environment.yaml \
+-e /home/stack/templates/cinder-pure.yaml \
+-e /home/stack/templates/environments/inject-trust-anchor-hiera.yaml \
+-e /home/stack/templates/environments/fix-nova-reserved-host-memory.yaml \
+-e /home/stack/templates/environments/firstboot.yaml \
+```
+
 ### Updating all the nodes
 ```bash
 source ~/stackrc
