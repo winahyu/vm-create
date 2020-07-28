@@ -6,6 +6,14 @@ curl http://$LOCAL_REGISTRY/v2/rhosp13/openstack-nova-libvirt/tags/list | jq .ta
 curl https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/multiarch/openstack/13/containers/rhosp13/openstack-nova-libvirt/tags/list | jq .tags
 ```
 
+### Updating Undercloud VM component.
+```bash
+sudo yum update -y python-tripleoclient
+openstack undercloud upgrade
+sudo reboot
+```
+
+
 ### Overcloud and Container Images update preparation
 ```bash
 sudo yum -y install rhosp-director-images
