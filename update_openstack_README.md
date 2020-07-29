@@ -64,7 +64,8 @@ openstack overcloud update run --nodes Controller
 
 
 #Updating all ComputeOvsDpdk nodes
-openstack overcloud update run --nodes ComputeOvsDpdk
+openstack overcloud update run --nodes ComputeOvsDpdk or
+openstack overcloud update run --nodes compute01 <-- for updating single node based on its name.
 
 #finalizing.
 openstack overcloud update converge \
